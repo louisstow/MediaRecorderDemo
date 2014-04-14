@@ -1,0 +1,14 @@
+{
+	"name": "Media Recorder",
+	"description": "Media Recorder",
+	"launch_path": "/index.html",
+	"type": "privileged",
+	"icons": {
+		"128": ""
+	},
+
+	"permissions": {
+		"audio-capture": "test",
+        "video-capture": "test"
+	}
+}

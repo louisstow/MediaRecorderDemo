@@ -1,7 +1,7 @@
 // based off https://bug803414.bugzilla.mozilla.org/attachment.cgi?id=735088
-var audio = document.getElementById('player');
+var player = document.getElementById('player');
 
-navigator.mozGetUserMedia({ audio: true }, function (stream) {
+navigator.mozGetUserMedia({ audio: true, video: true }, function (stream) {
   var recorder = new MediaRecorder(stream); // recorder.state === 'inactive
 
   // will be called again after stop, but state will be inactive
@@ -10,15 +10,17 @@ navigator.mozGetUserMedia({ audio: true }, function (stream) {
       console.log(e.data);
       recorder.stop();
       stream.stop();
-      audio.src = URL.createObjectURL(e.data);
-      audio.onended = function () {
-        URL.revokeObjectURL(audio.src);
-        audio.src = null;
+
+      player.src = URL.createObjectURL(e.data);
+      player.play();
+      recorder.onended = function () {
+        URL.revokeObjectURL(recorder.src);
+        recorder.src = null;
       };
     }
   };
 
-  recorder.start(1000); // record for 1s. recorder.state === 'recording'
+  recorder.start(7000); // record for 1s. recorder.state === 'recording'
 }, function (err) {
   console.error('err: ' + err);
 });
