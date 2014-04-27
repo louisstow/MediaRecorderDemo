@@ -1,7 +1,7 @@
 MediaRecorderDemo
 =================
 
-A demo showing off the new MediaRecorder API
+A demo showing off the new MediaRecorder API. Includes video recording, pause & resume and preview.
 
 ###Links
 * [spec](https://dvcs.w3.org/hg/dap/raw-file/default/media-stream-capture/MediaRecorder.html)
